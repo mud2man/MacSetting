@@ -1,0 +1,87 @@
+filetype plugin indent on
+execute pathogen#infect() 
+syntax on
+se ruler 
+se ru
+se backspace=2
+se hls
+se nocscopeverbose
+se mouse=nv
+se laststatus=2
+se ic
+se ai
+se bg=dark
+se cursorline
+se autoindent
+se number
+se tabstop=4
+se paste
+se shiftwidth=4
+se expandtab
+se softtabstop=4
+set list lcs=tab:\┊\ 
+
+function! CenterTabNext()
+:tabnext | wincmd h | wincmd h | wincmd l
+endfunction
+
+function! CenterTabPrevious()
+:tabprevious | wincmd h | wincmd h | wincmd l
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>Hotkey mapping 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <D-t> <CR>
+nnoremap <F1> :TagbarToggle<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <C-Right> :call CenterTabNext() <CR>
+nnoremap <C-Left> :call CenterTabPrevious() <CR>
+nnoremap :q :qa
+nnoremap :q :qa
+nnoremap :wq :wqa
+nnoremap <S-a> <C-f>
+nnoremap <S-q> <C-b>
+nnoremap <S-Right> $
+nnoremap <S-Left> 0
+imap <S-Left> <C-o>0
+imap <S-Right> <C-o>$
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>Tagbar configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:tagbar_width=20 
+let g:tagbar_left=1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>NERDTree configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeeShowBookmarks = 1
+"let NERDTreeWinPos = "right"
+let NERDTreeWinSize = 20
+"let NERDTreeMapOpenInTab='<ENTER>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>Open NERDTree and Tlist when open tab
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd BufRead * TlistOpen
+"autocmd BufRead * NERDTree
+"autocmd TabEnter * TlistOpen
+"autocmd TabEnter * NERDTree
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>Move cursor to the opened file
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd VimEnter * TagbarOpen
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd w
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" =>vertical line indentation
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indentLine_color_term =14
+let g:indentLine_color_gui = '#09AA08'
+let g:indentLine_char = '┊'
+let g:indentLine_color_tty_light = 4 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
